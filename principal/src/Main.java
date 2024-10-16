@@ -68,7 +68,7 @@ public class Main {
                 String base= divisaSeleccionada(entrada());
 
                 System.out.println("ahora porfavor digite la cantidad a convertir");
-                String cantidad = entrada();
+                String cantidad = verificarCantidadValida(entrada());
 
                 System.out.println("\n\nAhora favor digite la moneda objetivo\n"+mostrarOpciones("lista de divisas"));
                 String objetivo= divisaSeleccionada(entrada());
@@ -155,5 +155,18 @@ public class Main {
         }catch (Exception e){
             System.out.println("error encontrado en conversorCantidad:\n"+e);
         }
+    }
+
+    public static String verificarCantidadValida(String usuario_entrada){
+        String respuesta ="5";
+        try{
+            double usuario_respuesta = Double.parseDouble(usuario_entrada);
+            if (usuario_respuesta>=1){
+                respuesta = usuario_entrada;
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("NO DIGITÓ UNA CANTIDAD VALIDA, SE LE ASIGNÓ LA CANTIDAD DE 5 POR DEFECTO");
+        }
+        return respuesta;
     }
 }
